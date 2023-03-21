@@ -14,7 +14,7 @@ const emailRegistro = async (datos) => {
 
       // Enviar el email
       const info = await transport.sendMail({
-        front: '"APV - Administrado de Pacientes de Veterinaria" <apv@correo.com>',
+        front: '"APV - Administrado de Pacientes de Veterinaria" apv@correo.com',
         to: email,
         subject: "Comprueba tu cuenta en APV",
         text: "Comprueba tu cuenta en APV",
