@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 
-const emailRegistro = async (datos) => {
-    const transport = nodemailer.createTransport({
+const emailRegistro = async datos => {
+    const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
         auth: {
@@ -13,11 +13,11 @@ const emailRegistro = async (datos) => {
       const { email, nombre, token } = datos;
 
       // Enviar el email
-      const info = await transport.sendMail({
+      const info = await transporter.sendMail({
         front: '"APV - Administrado de Pacientes de Veterinaria" <apv@correo.com>',
-        to: email,
-        subject: "Comprueba tu cuenta en APV",
-        text: "Comprueba tu cuenta en APV",
+        to: `${email}`,
+        subject: 'Comprueba tu cuenta en APV',
+        text: 'Comprueba tu cuenta en APV',
         html: `<p>Hola: ${nombre}, comprueba tu cuenta en APV.</p>
               <p>Tu cuenta ya esta lista, solo debes comprobarla en el siguiente enlace:
               <a href="${process.env.FRONTEND_URL}/confirmar/${token}">Confirmar Cuenta</a> </p>
